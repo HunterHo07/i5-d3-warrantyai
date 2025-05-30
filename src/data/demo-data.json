@@ -1,0 +1,306 @@
+{
+  "sampleProducts": [
+    {
+      "id": "1",
+      "product": "iPhone 15 Pro",
+      "brand": "Apple",
+      "model": "A3108",
+      "category": "Electronics",
+      "purchaseDate": "2024-01-15",
+      "warrantyPeriod": "1 year",
+      "warrantyExpiry": "2025-01-15",
+      "price": "$999.00",
+      "store": "Apple Store",
+      "serialNumber": "F2LW48XJPN",
+      "status": "active",
+      "confidence": 0.95,
+      "image": "/demo/iphone-15-pro.jpg"
+    },
+    {
+      "id": "2",
+      "product": "MacBook Pro",
+      "brand": "Apple",
+      "model": "M3 Pro",
+      "category": "Electronics",
+      "purchaseDate": "2023-11-20",
+      "warrantyPeriod": "1 year",
+      "warrantyExpiry": "2024-11-20",
+      "price": "$1,999.00",
+      "store": "Best Buy",
+      "serialNumber": "C02ZX1XJMD6T",
+      "status": "expiring_soon",
+      "confidence": 0.98,
+      "image": "/demo/macbook-pro.jpg"
+    },
+    {
+      "id": "3",
+      "product": "LG OLED TV",
+      "brand": "LG",
+      "model": "OLED55C3PUA",
+      "category": "Electronics",
+      "purchaseDate": "2023-06-10",
+      "warrantyPeriod": "2 years",
+      "warrantyExpiry": "2025-06-10",
+      "price": "$1,299.99",
+      "store": "Costco",
+      "serialNumber": "305MABC123456",
+      "status": "active",
+      "confidence": 0.92,
+      "image": "/demo/lg-oled-tv.jpg"
+    },
+    {
+      "id": "4",
+      "product": "Whirlpool Refrigerator",
+      "brand": "Whirlpool",
+      "model": "WRF535SWHZ",
+      "category": "Appliances",
+      "purchaseDate": "2022-08-15",
+      "warrantyPeriod": "5 years",
+      "warrantyExpiry": "2027-08-15",
+      "price": "$1,899.00",
+      "store": "Home Depot",
+      "serialNumber": "WH22081512345",
+      "status": "active",
+      "confidence": 0.89,
+      "image": "/demo/whirlpool-fridge.jpg"
+    },
+    {
+      "id": "5",
+      "product": "Tesla Model 3",
+      "brand": "Tesla",
+      "model": "Model 3 Long Range",
+      "category": "Automotive",
+      "purchaseDate": "2023-03-22",
+      "warrantyPeriod": "4 years",
+      "warrantyExpiry": "2027-03-22",
+      "price": "$47,240.00",
+      "store": "Tesla Service Center",
+      "serialNumber": "5YJ3E1EA8PF123456",
+      "status": "active",
+      "confidence": 0.97,
+      "image": "/demo/tesla-model-3.jpg"
+    },
+    {
+      "id": "6",
+      "product": "IKEA MALM Bed",
+      "brand": "IKEA",
+      "model": "MALM-BED-FRAME",
+      "category": "Furniture",
+      "purchaseDate": "2023-09-05",
+      "warrantyPeriod": "25 years",
+      "warrantyExpiry": "2048-09-05",
+      "price": "$179.00",
+      "store": "IKEA",
+      "serialNumber": "IK230905MALM",
+      "status": "active",
+      "confidence": 0.85,
+      "image": "/demo/ikea-malm-bed.jpg"
+    }
+  ],
+  "sampleReminders": [
+    {
+      "id": "1",
+      "productId": "2",
+      "type": "warranty_expiry",
+      "title": "MacBook Pro Warranty Expiring",
+      "message": "Your MacBook Pro warranty expires in 30 days. Consider purchasing extended coverage.",
+      "date": "2024-10-20",
+      "priority": "high",
+      "category": "warranty",
+      "status": "pending"
+    },
+    {
+      "id": "2",
+      "productId": "4",
+      "type": "maintenance",
+      "title": "Refrigerator Filter Replacement",
+      "message": "Replace your refrigerator water filter for optimal performance.",
+      "date": "2024-02-15",
+      "priority": "medium",
+      "category": "maintenance",
+      "status": "pending"
+    },
+    {
+      "id": "3",
+      "productId": "5",
+      "type": "service",
+      "title": "Tesla Service Appointment",
+      "message": "Your Tesla Model 3 is due for its annual service check.",
+      "date": "2024-03-22",
+      "priority": "medium",
+      "category": "service",
+      "status": "pending"
+    }
+  ],
+  "sampleClaims": [
+    {
+      "id": "1",
+      "productId": "1",
+      "claimNumber": "CLAIM-2024-001",
+      "issue": "Screen flickering intermittently",
+      "status": "in_progress",
+      "submittedDate": "2024-01-20",
+      "estimatedResolution": "2024-01-27",
+      "documents": [
+        "receipt_copy.pdf",
+        "issue_photos.zip",
+        "diagnostic_report.pdf"
+      ]
+    }
+  ],
+  "demoScenarios": [
+    {
+      "id": "receipt_upload",
+      "title": "Receipt Upload & AI Extraction",
+      "description": "Upload a receipt photo and watch AI extract warranty information",
+      "steps": [
+        "Select or drag a receipt image",
+        "AI processes the image using OCR",
+        "Product information is automatically extracted",
+        "Warranty details are populated",
+        "Item is added to your inventory"
+      ],
+      "duration": "30 seconds",
+      "difficulty": "Easy"
+    },
+    {
+      "id": "dashboard_overview",
+      "title": "Smart Dashboard",
+      "description": "Explore your warranty dashboard with real-time insights",
+      "steps": [
+        "View all tracked items at a glance",
+        "Check warranty expiration dates",
+        "See upcoming reminders",
+        "Monitor item values and savings",
+        "Access quick actions"
+      ],
+      "duration": "45 seconds",
+      "difficulty": "Easy"
+    },
+    {
+      "id": "3d_inventory",
+      "title": "3D Room Inventory",
+      "description": "Visualize your items in a 3D room layout",
+      "steps": [
+        "Enter 3D room view",
+        "See items placed in virtual space",
+        "Interact with 3D models",
+        "View item details in context",
+        "Plan room layouts"
+      ],
+      "duration": "60 seconds",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "claim_assistant",
+      "title": "Warranty Claim Assistant",
+      "description": "Get step-by-step help with warranty claims",
+      "steps": [
+        "Report an issue with your item",
+        "AI analyzes claim eligibility",
+        "Get required documents list",
+        "Generate claim forms",
+        "Submit to manufacturer"
+      ],
+      "duration": "90 seconds",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "smart_reminders",
+      "title": "Smart Reminder System",
+      "description": "Set up intelligent reminders for warranties and maintenance",
+      "steps": [
+        "AI suggests optimal reminder times",
+        "Customize notification preferences",
+        "Set maintenance schedules",
+        "Get proactive alerts",
+        "Never miss important dates"
+      ],
+      "duration": "45 seconds",
+      "difficulty": "Easy"
+    },
+    {
+      "id": "email_integration",
+      "title": "Email Receipt Import",
+      "description": "Automatically import receipts from your email",
+      "steps": [
+        "Connect your email account",
+        "AI scans for purchase receipts",
+        "Automatically extracts warranty info",
+        "Adds items to your inventory",
+        "Keeps everything organized"
+      ],
+      "duration": "60 seconds",
+      "difficulty": "Advanced"
+    },
+    {
+      "id": "family_sharing",
+      "title": "Family Warranty Sharing",
+      "description": "Share warranty information with family members",
+      "steps": [
+        "Invite family members",
+        "Share household items",
+        "Set permission levels",
+        "Coordinate maintenance",
+        "Get family notifications"
+      ],
+      "duration": "75 seconds",
+      "difficulty": "Advanced"
+    }
+  ],
+  "aiResponses": [
+    {
+      "trigger": "upload_start",
+      "message": "Analyzing your receipt... I can see text and images clearly.",
+      "delay": 1000
+    },
+    {
+      "trigger": "ocr_processing",
+      "message": "Extracting text using advanced OCR technology...",
+      "delay": 2000
+    },
+    {
+      "trigger": "product_identification",
+      "message": "I've identified the product! Let me gather warranty information.",
+      "delay": 3000
+    },
+    {
+      "trigger": "warranty_lookup",
+      "message": "Looking up warranty terms and coverage details...",
+      "delay": 4000
+    },
+    {
+      "trigger": "completion",
+      "message": "Perfect! Your item has been added with full warranty tracking.",
+      "delay": 5000
+    }
+  ],
+  "statistics": {
+    "totalUsers": 50000,
+    "itemsTracked": 1200000,
+    "moneySaved": 2500000,
+    "aiAccuracy": 99.2,
+    "averageProcessingTime": 2.3,
+    "customerSatisfaction": 4.8
+  },
+  "features": {
+    "aiExtraction": {
+      "accuracy": "99.2%",
+      "supportedFormats": ["PDF", "JPG", "PNG", "HEIC"],
+      "languages": ["English", "Spanish", "French", "German"],
+      "processingTime": "2-5 seconds"
+    },
+    "reminders": {
+      "types": ["Warranty Expiry", "Maintenance", "Service", "Registration"],
+      "channels": ["Email", "SMS", "Push", "In-App"],
+      "customization": "Full",
+      "smartSuggestions": true
+    },
+    "3dVisualization": {
+      "roomTypes": ["Living Room", "Kitchen", "Bedroom", "Office", "Garage"],
+      "itemModels": "1000+",
+      "arSupport": true,
+      "vrCompatible": false
+    }
+  }
+}
