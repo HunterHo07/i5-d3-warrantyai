@@ -1,12 +1,13 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Twitter, 
-  Linkedin, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Twitter,
+  Linkedin,
   Github,
   ArrowUp,
   Heart
@@ -16,9 +17,32 @@ import Button from "./Button";
 import { NAVIGATION, APP_CONFIG } from "@/lib/constants";
 
 const Footer = () => {
+  const [particles, setParticles] = useState([]);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  // Generate deterministic particles to avoid hydration mismatch
+  useEffect(() => {
+    const generateParticles = () => {
+      const particleArray = [];
+      for (let i = 0; i < 20; i++) {
+        // Use deterministic values based on index
+        const seed = i * 137.508; // Golden angle for better distribution
+        particleArray.push({
+          id: i,
+          left: ((seed * 7) % 100),
+          top: ((seed * 11) % 100),
+          duration: 3 + ((seed * 3) % 2),
+          delay: (seed * 2) % 2,
+        });
+      }
+      setParticles(particleArray);
+    };
+
+    generateParticles();
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -223,22 +247,22 @@ const Footer = () => {
 
       {/* Floating Particles */}
       <div className="absolute inset-0 pointer-events-none">
-        {Array.from({ length: 20 }).map((_, i) => (
+        {particles.map((particle) => (
           <motion.div
-            key={i}
+            key={particle.id}
             className="absolute w-1 h-1 bg-primary-cyan/30 rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${particle.left}%`,
+              top: `${particle.top}%`,
             }}
             animate={{
               y: [-10, -30, -10],
               opacity: [0.3, 0.8, 0.3],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: particle.duration,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: particle.delay,
             }}
           />
         ))}

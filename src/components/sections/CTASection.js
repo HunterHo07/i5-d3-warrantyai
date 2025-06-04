@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight, Sparkles, Shield, Zap, Clock } from "lucide-react";
 import Button from "@/components/ui/Button";
@@ -8,21 +8,44 @@ import Card from "@/components/ui/Card";
 
 // Animated Background Elements
 const AnimatedBackground = () => {
+  const [particles, setParticles] = useState([]);
+
+  // Generate deterministic particles to avoid hydration mismatch
+  useEffect(() => {
+    const generateParticles = () => {
+      const particleArray = [];
+      for (let i = 0; i < 30; i++) {
+        // Use deterministic values based on index
+        const seed = i * 137.508; // Golden angle for better distribution
+        particleArray.push({
+          id: i,
+          left: ((seed * 7) % 100),
+          top: ((seed * 11) % 100),
+          duration: 4 + ((seed * 3) % 2),
+          delay: (seed * 2) % 2,
+        });
+      }
+      setParticles(particleArray);
+    };
+
+    generateParticles();
+  }, []);
+
   return (
     <div className="absolute inset-0 overflow-hidden">
       {/* Gradient Orbs */}
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary-blue/20 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary-cyan/20 rounded-full blur-3xl animate-pulse" />
       <div className="absolute top-3/4 left-3/4 w-48 h-48 bg-primary-purple/20 rounded-full blur-3xl animate-pulse" />
-      
+
       {/* Floating Particles */}
-      {Array.from({ length: 30 }).map((_, i) => (
+      {particles.map((particle) => (
         <motion.div
-          key={i}
+          key={particle.id}
           className="absolute w-2 h-2 bg-primary-cyan/40 rounded-full"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
+            left: `${particle.left}%`,
+            top: `${particle.top}%`,
           }}
           animate={{
             y: [-20, -40, -20],
@@ -31,14 +54,14 @@ const AnimatedBackground = () => {
             scale: [1, 1.2, 1],
           }}
           transition={{
-            duration: 4 + Math.random() * 2,
+            duration: particle.duration,
             repeat: Infinity,
-            delay: Math.random() * 2,
+            delay: particle.delay,
             ease: "easeInOut",
           }}
         />
       ))}
-      
+
       {/* Grid Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.1)_1px,transparent_1px)] bg-[size:60px_60px] animate-pulse" />

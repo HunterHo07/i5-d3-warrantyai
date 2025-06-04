@@ -20,6 +20,7 @@ import {
   Sparkles
 } from "lucide-react";
 import Button from "@/components/ui/Button";
+import VideoPopup from "@/components/ui/VideoPopup";
 import { APP_CONFIG } from "@/lib/constants";
 
 // 3D Floating Warranty Items Component
@@ -248,6 +249,9 @@ const MiniDemoAnimation = () => {
 
 const HeroSection = () => {
   const containerRef = useRef();
+  const [isVideoPopupOpen, setIsVideoPopupOpen] = useState(false);
+  const [particles, setParticles] = useState([]);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
@@ -262,6 +266,27 @@ const HeroSection = () => {
     "AI-powered protection",
     "Smart reminder system"
   ];
+
+  // Generate deterministic particles to avoid hydration mismatch
+  useEffect(() => {
+    const generateParticles = () => {
+      const particleArray = [];
+      for (let i = 0; i < 50; i++) {
+        // Use deterministic values based on index
+        const seed = i * 137.508; // Golden angle for better distribution
+        particleArray.push({
+          id: i,
+          left: ((seed * 7) % 100),
+          top: ((seed * 11) % 100),
+          duration: 3 + ((seed * 3) % 2),
+          delay: (seed * 2) % 2,
+        });
+      }
+      setParticles(particleArray);
+    };
+
+    generateParticles();
+  }, []);
 
   return (
     <section 
@@ -280,22 +305,22 @@ const HeroSection = () => {
         
         {/* Floating Particles */}
         <div className="absolute inset-0">
-          {Array.from({ length: 50 }).map((_, i) => (
+          {particles.map((particle) => (
             <motion.div
-              key={i}
+              key={particle.id}
               className="absolute w-1 h-1 bg-primary-cyan rounded-full"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: `${particle.left}%`,
+                top: `${particle.top}%`,
               }}
               animate={{
                 y: [-20, -100],
                 opacity: [0, 1, 0],
               }}
               transition={{
-                duration: 3 + Math.random() * 2,
+                duration: particle.duration,
                 repeat: Infinity,
-                delay: Math.random() * 2,
+                delay: particle.delay,
               }}
             />
           ))}
@@ -393,7 +418,7 @@ const HeroSection = () => {
                 variant="outline"
                 size="lg"
                 icon={<Play className="w-5 h-5" />}
-                href="#video"
+                onClick={() => setIsVideoPopupOpen(true)}
                 className="text-lg px-8 py-4"
               >
                 Watch Video
@@ -462,6 +487,12 @@ const HeroSection = () => {
           />
         </motion.div>
       </motion.div>
+
+      {/* Video Popup */}
+      <VideoPopup
+        isOpen={isVideoPopupOpen}
+        onClose={() => setIsVideoPopupOpen(false)}
+      />
     </section>
   );
 };
