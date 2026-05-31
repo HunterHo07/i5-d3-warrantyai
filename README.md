@@ -7,7 +7,7 @@ WarrantyAI is a cutting-edge AI-powered warranty management platform that revolu
 ## 🚀 Live Demo
 
 - **Homepage**: [http://localhost:3001](http://localhost:3001)
-- **Interactive Demo**: [http://localhost:3001/demo](http://localhost:3001/demo)
+- **Interactive Demo**: [https://i5-d3-warrantyai.vercel.app/demo](https://i5-d3-warrantyai.vercel.app/demo)
 - **Features**: [http://localhost:3001/features](http://localhost:3001/features)
 - **Pricing**: [http://localhost:3001/pricing](http://localhost:3001/pricing)
 - **About**: [http://localhost:3001/about](http://localhost:3001/about)
